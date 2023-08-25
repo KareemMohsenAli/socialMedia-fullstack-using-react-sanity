@@ -46,10 +46,10 @@ function Login() {
                 onSuccess={(credentialResponse) => {
                   const details = jwtDecode(credentialResponse.credential);
                   localStorage.setItem("user", JSON.stringify(details));
-                  const { name, picture } = details;
+                  const { name, picture, sub} = details;
                   console.log(name, picture);
                   const doc = {
-                    _id:new Date().getTime().toString(),
+                    _id:sub,
                     _type: "user",
                     username: name,
                     image: picture,
